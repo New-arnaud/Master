@@ -11,7 +11,6 @@ function draw() {
 }
 
 function grid() {
-
   let space = 10;
   space = space + (space * cos(space)-space * sin(space));
   console.log(space);

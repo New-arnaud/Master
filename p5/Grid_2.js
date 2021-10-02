@@ -1,38 +1,47 @@
-function setup() {
+var resX=740;
+var resY=480;
 
-  var resX=740;
-  var resY=480;
-  createCanvas(resX, resY);
+function setup() {
+  createCanvas(resX, resY,WEBGL);
+  frameRate(1)
 }
 
 function draw() {
 
   background(0);
-  stroke(255);
-  strokeWeight(4);
-  rotate(millis() / 1000);
-
-  /*
-  rotateX(millis()/1000);
-  rotateY(millis()/1000);
+  colorMode(RGB,255);
+  fill;
+  strokeWeight(10);
+  /*rotate(millis() / 1000);*/
+  rotateX(45);
+  /*rotateY(millis()/1000);
   */
   grid();
 }
 
 function grid() {
 
-  let originX = 0;
-  let originY = 0;
-  let space = 10+0;
-  let maxgridX = windowWidth;
-  let maxgridY = windowHeight;
+  let originX = -1*(resX/2);
+  let originY = -1*(resY/2);
+  let space = 10+10;
+  let maxgridX = resX-space*15/*windowWidth*/;
+  let maxgridY = resY/*windowHeight*/;
   let i = 0;
   let j = 0;
 
 for (i = originX; i < maxgridX ; i += space) {
 
   for (j = originY; j < maxgridY ; j+= space) {
-    point(i,j);
+    let z = random(0,50)
+    if (z<10) {
+      cl=50;
+    } else if (z>20) {
+      cl=255;
+      } else {
+      cl=150;
+    }
+    stroke(0,cl,0);
+    point(i,j,z);
   }
 }
 }
